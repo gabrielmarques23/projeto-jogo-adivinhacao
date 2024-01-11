@@ -1,37 +1,28 @@
-// Variáveis da aplicação
+// Variáveis
 const screen1 = document.querySelector(".screen1")
 const screen2 = document.querySelector(".screen2")
 const btnTry = document.querySelector("#btnTry")
 const btnReset = document.querySelector("#btnReset")
-
 const randomNumber = Math.round(Math.random() * 10)
+
 let xAttempts = 1
 
-// Eventos
+//Eventos
 btnTry.addEventListener('click', handleTryClick)
 btnReset.addEventListener('click', handleResetClick)
 
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-        // Verifica se a tela 1 está visível antes de chamar handleTryClick
-        if (!screen1.classList.contains("hide")) {
-            handleTryClick(e);
-        }
-    }
-})
-
 //Funções
 function handleTryClick(event) {
-    event.preventDefault() // << Não faça o padrão 
-
+    event.preventDefault() //<< Não faça o padrão
     const inputNumber = document.querySelector("#inputNumber")
 
     if (Number(inputNumber.value) == randomNumber) {
         toggleScreen()
-        screen2.querySelector("h2").innerText = `Você acertou em ${xAttempts} tentativas.`
+        screen2.querySelector("h2").innerText = `Você acertou em ${xAttempts} tentativas`
     }
-    
+
     inputNumber.value = ""
+
     xAttempts++
 }
 
